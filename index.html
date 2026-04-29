@@ -100,7 +100,9 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="IMG_0429.jpeg" fetchpriority="high" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" /></noscript>
   <style>
     :root {
       --bg: #0b1118;
@@ -1019,7 +1021,7 @@
     <div class="container">
       <div class="topbar-inner">
         <a class="logo-wrap" href="#home">
-          <img class="logo-img" src="IMG_0505.JPG" alt="Ameri Solutions logo" />
+          <img class="logo-img" src="IMG_0505.JPG" alt="Ameri Solutions logo" width="960" height="960" loading="lazy" />
           <div>
             <div class="brand">Ameri Solutions</div>
             <div class="brand-sub">Property Services</div>
@@ -1072,7 +1074,7 @@
         </article>
 
         <article class="hero-media fade">
-          <img src="IMG_0429.jpeg" alt="Custom fireplace drywall craftsmanship" />
+          <img src="IMG_0429.jpeg" alt="Custom fireplace drywall craftsmanship" width="1200" height="900" fetchpriority="high" loading="eager" />
           <p class="hero-note">Detailed execution across repairs, exterior care, and property upkeep.</p>
         </article>
       </div>
@@ -1372,7 +1374,7 @@
           return `
             <article class="project-card fade" data-index="${index}" role="button" tabindex="0" aria-label="Open project: ${item.title}">
               <div class="project-media">
-                <img src="${item.image}" alt="${item.title}" />
+                <img src="${item.image}" alt="${item.title}" loading="lazy" width="900" height="675" />
                 <span class="missing-media">Image coming soon</span>
               </div>
               <div class="project-body">
