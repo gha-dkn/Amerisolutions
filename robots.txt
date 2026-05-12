@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://amerihomesolutions.com/sitemap.xml
+Sitemap: https://www.amerihomesolutions.com/sitemap.xml
