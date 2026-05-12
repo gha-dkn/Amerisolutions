@@ -1553,9 +1553,30 @@
         return;
       }
 
-      status.className = "form-status success show";
-      status.textContent = "Request submitted. For the fastest response, call (240) 220-8445.";
-      quoteForm.reset();
+      const submitBtn = quoteForm.querySelector("button[type=submit]");
+      submitBtn.disabled = true;
+      status.className = "form-status show";
+      status.textContent = "Sending…";
+
+      fetch("https://formspree.io/f/xykookwv", {
+        method: "POST",
+        headers: { "Accept": "application/json", "Content-Type": "application/json" },
+        body: JSON.stringify({ name, phone, email, service, timeline: String(data.get("timeline") || "").trim(), details })
+      })
+        .then((res) => {
+          if (res.ok) {
+            status.className = "form-status success show";
+            status.textContent = "Request submitted. For the fastest response, call (240) 220-8445.";
+            quoteForm.reset();
+          } else {
+            return res.json().then((body) => { throw new Error(body.error || "Server error"); });
+          }
+        })
+        .catch(() => {
+          status.className = "form-status warn show";
+          status.textContent = "Submission failed. Please call (240) 220-8445 or try again.";
+        })
+        .finally(() => { submitBtn.disabled = false; });
     });
 
     const sections = document.querySelectorAll("main section[id]");
